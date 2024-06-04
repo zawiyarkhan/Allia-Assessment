@@ -1,0 +1,32 @@
+import 'dart:convert';
+
+import 'package:allure_health/Data/Repo/auth_repo.dart';
+import 'package:http/http.dart' as http;
+
+class QuestionDataProvider {
+  final AuthRepo authRepo;
+
+  QuestionDataProvider(this.authRepo);
+
+  Future<String> getAllData() async {
+    try {
+      final token = authRepo.getAccessToken();
+      final response = await http.get(
+        Uri.parse(
+            "https://api-dev.allia.health/api/client/self-report/question"),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        return response.body;
+      } else {
+        throw Exception('Failed to load data');
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+}
