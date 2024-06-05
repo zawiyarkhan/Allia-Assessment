@@ -7,9 +7,9 @@ class QuestionRepo {
   final QuestionDataProvider questionDataProvider;
   QuestionRepo(this.questionDataProvider);
 
-  Future<List<Question>> getData() async {
+  Future<List<Question>> getData(String token) async {
     try {
-      final data = await questionDataProvider.getAllData();
+      final data = await questionDataProvider.getAllData(token);
       final question_data = jsonDecode(data);
 
       final List<Question> questions = List<Question>.from(

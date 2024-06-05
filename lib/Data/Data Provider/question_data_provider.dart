@@ -4,13 +4,8 @@ import 'package:allure_health/Data/Repo/auth_repo.dart';
 import 'package:http/http.dart' as http;
 
 class QuestionDataProvider {
-  final AuthRepo authRepo;
-
-  QuestionDataProvider(this.authRepo);
-
-  Future<String> getAllData() async {
+  Future<String> getAllData(String token) async {
     try {
-      final token = authRepo.getAccessToken();
       final response = await http.get(
         Uri.parse(
             "https://api-dev.allia.health/api/client/self-report/question"),
