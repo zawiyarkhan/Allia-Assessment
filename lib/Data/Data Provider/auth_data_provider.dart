@@ -15,6 +15,7 @@ class AuthDataProvider {
           'password': '12345678',
         }),
       );
+      print(response.body);
       return response.body;
     } catch (e) {
       print(e.toString());
