@@ -1,3 +1,4 @@
+import 'package:allure_health/Views/Pages/likert_scale.dart';
 import 'package:allure_health/Views/Widgets/emoji_card.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -89,7 +90,10 @@ class _SingleChoiceQuestionState extends State<SingleChoiceQuestion> {
             ),
             GestureDetector(
               onTap: () {
-                print("hello");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LikertScale()),
+                );
               },
               child: Image.asset("assets/arrowIcon.png"),
             ),

@@ -1,3 +1,4 @@
+import 'package:allure_health/Views/Pages/all_done.dart';
 import 'package:allure_health/Views/Widgets/custom_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -53,7 +54,10 @@ class _LikertScaleState extends State<LikertScale> {
           ),
           GestureDetector(
             onTap: () {
-              print("hello");
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AllDonePage()),
+              );
             },
             child: Image.asset("assets/arrowIcon.png"),
           )
