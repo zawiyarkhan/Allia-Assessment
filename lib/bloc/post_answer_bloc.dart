@@ -12,7 +12,9 @@ class PostAnswerBloc extends Bloc<PostAnswerEvent, PostAnswerState> {
     on<AnswerEvent>((event, emit) async {
       try {
         final data = event.answer;
+        print(data);
         final verdict = await answerRepo.postAnswer(data);
+        print(verdict);
         emit(AnswerSuccess(verdict));
       } catch (e) {
         throw (e.toString());
