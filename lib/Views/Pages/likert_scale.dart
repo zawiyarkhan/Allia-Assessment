@@ -1,6 +1,8 @@
+import 'package:allure_health/Routes/route_constants.dart';
 import 'package:allure_health/Views/Pages/all_done.dart';
 import 'package:allure_health/Views/Widgets/custom_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LikertScale extends StatefulWidget {
@@ -54,10 +56,8 @@ class _LikertScaleState extends State<LikertScale> {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const AllDonePage()),
-              );
+              GoRouter.of(context)
+                  .pushNamed(MyAppRouteConstants.allDoneRouteName);
             },
             child: Image.asset("assets/arrowIcon.png"),
           )
