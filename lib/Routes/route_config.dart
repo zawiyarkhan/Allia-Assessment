@@ -7,41 +7,39 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class MyAppRouter {
-  static GoRouter returnRouter() {
-    GoRouter router = GoRouter(
-      routes: [
-        GoRoute(
-          name: MyAppRouteConstants.openingRouteName,
-          path: '/',
-          pageBuilder: (context, state) {
-            return const MaterialPage(
-              child: OpeningPage(),
-            );
-          },
-        ),
-        GoRoute(
-          name: MyAppRouteConstants.singleChoiceRouteName,
-          path: '/singleChoice',
-          pageBuilder: (context, state) {
-            return const MaterialPage(child: SingleChoiceQuestion());
-          },
-        ),
-        GoRoute(
-          name: MyAppRouteConstants.singleChoiceRouteName,
-          path: '/likert',
-          pageBuilder: (context, state) {
-            return const MaterialPage(child: LikertScale());
-          },
-        ),
-        GoRoute(
-          name: MyAppRouteConstants.allDoneRouteName,
-          path: '/alldone',
-          pageBuilder: (context, state) {
-            return const MaterialPage(child: AllDonePage());
-          },
-        )
-      ],
-    );
-    return router;
-  }
+  static final GoRouter _router = GoRouter(
+    routes: [
+      GoRoute(
+        name: 'openingPage',
+        path: '/',
+        builder: (context, state) {
+          return const OpeningPage();
+        },
+      ),
+      GoRoute(
+        name: "singleChoice",
+        path: '/singleChoice',
+        builder: (context, state) {
+          return const SingleChoiceQuestion();
+        },
+      ),
+      GoRoute(
+        name: "likert",
+        path: '/likert',
+        builder: (context, state) {
+          print("Navigating to Likert Scale");
+          return const LikertScale();
+        },
+      ),
+      GoRoute(
+        name: "allDone",
+        path: '/alldone',
+        builder: (context, state) {
+          return const AllDonePage();
+        },
+      ),
+    ],
+  );
+
+  static GoRouter get router => _router;
 }

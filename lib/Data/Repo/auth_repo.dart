@@ -9,13 +9,13 @@ class AuthRepo {
 
   Future<String> getAccessToken() async {
     try {
-      print("hw");
+      // print("hw");
       final res = await authDataProvider.getTokens();
-      print("res: $res");
+      // print("res: $res");
       final data = jsonDecode(res);
-      print("data $data");
+      // print("data $data");
       final accessToken = data["body"]["accessToken"];
-      print("accessTpoken: $accessToken");
+      // print("accessTpoken: $accessToken");
       return accessToken;
     } catch (e) {
       rethrow;

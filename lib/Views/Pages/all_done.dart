@@ -34,8 +34,9 @@ class AllDonePage extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  GoRouter.of(context)
-                      .pushNamed(MyAppRouteConstants.openingRouteName);
+                  GoRouter.of(context).push(Uri(path: '/likert').toString());
+                  GoRouter.of(context).pushNamed("likert");
+                  print("object");
                 },
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,

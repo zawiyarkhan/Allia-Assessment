@@ -38,13 +38,13 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
           // home: const LikertScale(),
-          routeInformationParser:
-              MyAppRouter.returnRouter().routeInformationParser,
-          routerDelegate: MyAppRouter.returnRouter().routerDelegate,
+          routeInformationProvider: MyAppRouter.router.routeInformationProvider,
+          routeInformationParser: MyAppRouter.router.routeInformationParser,
+          routerDelegate: MyAppRouter.router.routerDelegate,
         ),
       ),
     );

@@ -92,8 +92,10 @@ class _SingleChoiceQuestionState extends State<SingleChoiceQuestion> {
             ),
             GestureDetector(
               onTap: () {
-                GoRouter.of(context)
-                    .pushNamed(MyAppRouteConstants.likertScaleRouteName);
+                GoRouter.of(context).pushNamed("likert");
+
+                // GoRouter.of(context).push(Uri(path: '/likert').toString());
+                // print("hello");
               },
               child: Image.asset("assets/arrowIcon.png"),
             ),
