@@ -88,7 +88,7 @@ class EmojiSliderThumb extends SliderComponentShape {
 
   @override
   Size getPreferredSize(bool isEnabled, bool isDiscrete) {
-    return Size(30.0, 30.0); // Adjust size as needed
+    return Size(30.0, 30.0);
   }
 
   @override
@@ -111,7 +111,7 @@ class EmojiSliderThumb extends SliderComponentShape {
     final TextPainter painter = TextPainter(
       text: TextSpan(
         text: emoji,
-        style: TextStyle(fontSize: 45), // Adjust font size as needed
+        style: TextStyle(fontSize: 45),
       ),
       textAlign: TextAlign.center,
       textDirection: TextDirection.ltr,

@@ -2,6 +2,7 @@ import 'package:allure_health/Data/Data%20Provider/auth_data_provider.dart';
 import 'package:allure_health/Data/Data%20Provider/question_data_provider.dart';
 import 'package:allure_health/Data/Repo/auth_repo.dart';
 import 'package:allure_health/Data/Repo/question_repo.dart';
+import 'package:allure_health/Routes/route_config.dart';
 import 'package:allure_health/Views/Pages/all_done.dart';
 import 'package:allure_health/Views/Pages/likert_scale.dart';
 import 'package:allure_health/Views/Pages/openingPage.dart';
@@ -33,14 +34,17 @@ class MyApp extends StatelessWidget {
           context.read<QuestionRepo>(),
           context.read<AuthRepo>(),
         ),
-        child: MaterialApp(
+        child: MaterialApp.router(
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: const LikertScale(),
+          // home: const LikertScale(),
+          routeInformationParser:
+              MyAppRouter.returnRouter().routeInformationParser,
+          routerDelegate: MyAppRouter.returnRouter().routerDelegate,
         ),
       ),
     );
