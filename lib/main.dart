@@ -1,5 +1,7 @@
+import 'package:allure_health/Data/Data%20Provider/answer_data_provider.dart';
 import 'package:allure_health/Data/Data%20Provider/auth_data_provider.dart';
 import 'package:allure_health/Data/Data%20Provider/question_data_provider.dart';
+import 'package:allure_health/Data/Repo/answer_repo.dart';
 import 'package:allure_health/Data/Repo/auth_repo.dart';
 import 'package:allure_health/Data/Repo/question_repo.dart';
 import 'package:allure_health/Routes/route_config.dart';
@@ -8,6 +10,7 @@ import 'package:allure_health/Views/Pages/likert_scale.dart';
 import 'package:allure_health/Views/Pages/openingPage.dart';
 import 'package:allure_health/Views/Pages/single_choice_question.dart';
 import 'package:allure_health/bloc/fetch_data_bloc.dart';
+import 'package:allure_health/bloc/post_answer_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,12 +31,24 @@ class MyApp extends StatelessWidget {
         RepositoryProvider(
           create: (context) => AuthRepo(AuthDataProvider()),
         ),
-      ],
-      child: BlocProvider(
-        create: (context) => FetchDataBloc(
-          context.read<QuestionRepo>(),
-          context.read<AuthRepo>(),
+        RepositoryProvider(
+          create: (context) => AnswerRepo(AnswerDataProvider()),
         ),
+      ],
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => FetchDataBloc(
+              context.read<QuestionRepo>(),
+              context.read<AuthRepo>(),
+            ),
+          ),
+          BlocProvider(
+            create: (context) => PostAnswerBloc(
+              context.read<AnswerRepo>(),
+            ),
+          ),
+        ],
         child: MaterialApp.router(
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
