@@ -1,8 +1,10 @@
+import 'package:allure_health/Routes/route_constants.dart';
 import 'package:allure_health/Views/Pages/single_choice_question.dart';
 import 'package:allure_health/bloc/fetch_data_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class OpeningPage extends StatefulWidget {
@@ -60,12 +62,8 @@ class _OpeningPageState extends State<OpeningPage> {
                         GestureDetector(
                           onTap: () {
                             dataBloc.add(FetchData());
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const SingleChoiceQuestion()),
-                            );
+                            GoRouter.of(context).pushNamed(
+                                MyAppRouteConstants.singleChoiceRouteName);
                           },
                           child: Text(
                             "Take A Check in",

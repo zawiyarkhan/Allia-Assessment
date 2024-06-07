@@ -1,4 +1,6 @@
+import 'package:allure_health/Routes/route_constants.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AllDonePage extends StatelessWidget {
@@ -31,7 +33,10 @@ class AllDonePage extends StatelessWidget {
             child: SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  GoRouter.of(context)
+                      .pushNamed(MyAppRouteConstants.openingRouteName);
+                },
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
                   backgroundColor: const Color(0xff2E959E), // Text color

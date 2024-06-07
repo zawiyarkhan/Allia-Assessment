@@ -1,7 +1,9 @@
+import 'package:allure_health/Routes/route_constants.dart';
 import 'package:allure_health/Views/Pages/likert_scale.dart';
 import 'package:allure_health/Views/Widgets/emoji_card.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SingleChoiceQuestion extends StatefulWidget {
@@ -90,10 +92,8 @@ class _SingleChoiceQuestionState extends State<SingleChoiceQuestion> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const LikertScale()),
-                );
+                GoRouter.of(context)
+                    .pushNamed(MyAppRouteConstants.likertScaleRouteName);
               },
               child: Image.asset("assets/arrowIcon.png"),
             ),
